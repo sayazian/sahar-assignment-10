@@ -27,7 +27,7 @@ class SpoonacularApplicationTests {
 		RestTemplate restTemplate = new RestTemplate();
 		String myApiKey = "7a7f9f134e69494583c524db8e2068e5";
 
-		URI uri = UriComponentsBuilder.fromHttpUrl("https://api.spoonacular.com/recipes/complexSearch?&apiKey=" + myApiKey)
+		URI uri = UriComponentsBuilder.fromUriString("https://api.spoonacular.com/recipes/complexSearch?&apiKey=" + myApiKey)
 				.queryParam("timeFrame", "day" )
 				.queryParam("targetCalories", 2000)
 				.queryParam("diet", "vegetarian")
@@ -49,7 +49,7 @@ class SpoonacularApplicationTests {
 		String myUsername = "ac172361-12e4-4dc7-a21e-814756eeda0c";
 		String myDate = "2025-09-01";
 //		https://api.spoonacular.com/mealplanner/ac172361-12e4-4dc7-a21e-814756eeda0c/week/2025-09-01?hash=902449678fceda3041b4ae7ea3e985cab0244b17&apiKey=7a7f9f134e69494583c524db8e2068e5
-		URI uri = UriComponentsBuilder.fromHttpUrl("https://api.spoonacular.com/mealplanner/" + myUsername + "/week/"
+		URI uri = UriComponentsBuilder.fromUriString("https://api.spoonacular.com/mealplanner/" + myUsername + "/week/"
 				+ myDate + "?hash=" + myHash
 				+ "&apiKey=" + myApiKey)
 				.queryParam("timeFrame", "day" )
@@ -61,9 +61,7 @@ class SpoonacularApplicationTests {
 
 		ResponseEntity<String> response = restTemplate.getForEntity(uri, String.class);
 		System.out.println(response);
-//		ResponseEntity<SpoonacularResponse> response = restTemplate.getForEntity(uri, SpoonacularResponse.class);
-//		Stream<RecipeResponse> resultsStream = Arrays.stream(Objects.requireNonNull(response.getBody()).getResults());
-//		System.out.println(resultsStream.map(RecipeResponse::printResponse).collect(Collectors.joining("\n")));
+
 	}
 
 	@Test
@@ -341,7 +339,7 @@ class SpoonacularApplicationTests {
 
 
 		} catch (JsonProcessingException e) {
-			e.printStackTrace();
+			System.out.println("Ann error occurred! " + e.getMessage());
 		}
 	}
 
@@ -352,7 +350,7 @@ class SpoonacularApplicationTests {
 		String myApiKey = "7a7f9f134e69494583c524db8e2068e5";
 		String myHash = "902449678fceda3041b4ae7ea3e985cab0244b17";
 		String input = "https://api.spoonacular.com/mealplanner/generate?";
-		URI uri = UriComponentsBuilder.fromHttpUrl(input)
+		URI uri = UriComponentsBuilder.fromUriString(input)
 				.queryParam("timeFrame", "week")
 				.queryParam("hash", myHash)
 				.queryParam("apiKey", myApiKey)
