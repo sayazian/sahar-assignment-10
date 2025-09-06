@@ -8,6 +8,6 @@ import org.springframework.context.annotation.Configuration;
 public class MealPlanConfiguration {
 
     @Bean
-    public MealPlansService mealPlansService() { return new MealPlansService();} ;
+    public MealPlansService mealPlansService() { return new MealPlansService();}
 
 }

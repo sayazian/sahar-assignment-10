@@ -351,23 +351,15 @@ class SpoonacularApplicationTests {
 		RestTemplate restTemplate = new RestTemplate();
 		String myApiKey = "7a7f9f134e69494583c524db8e2068e5";
 		String myHash = "902449678fceda3041b4ae7ea3e985cab0244b17";
-		String myUsername = "ac172361-12e4-4dc7-a21e-814756eeda0c";
-//		String input = "https://api.spoonacular.com/mealplanner/generate?timeFrame=week&hash=902449678fceda3041b4ae7ea3e985cab0244b17&apiKey=7a7f9f134e69494583c524db8e2068e5";
 		String input = "https://api.spoonacular.com/mealplanner/generate?";
 		URI uri = UriComponentsBuilder.fromHttpUrl(input)
 				.queryParam("timeFrame", "week")
 				.queryParam("hash", myHash)
 				.queryParam("apiKey", myApiKey)
-//				.queryParam("timeFrame", "day" )
-//				.queryParam("targetCalories", 2000)
-//				.queryParam("diet", "vegetarian")
-//				.queryParam("exclude", "shellfish, olives")
 				.build()
 				.toUri();
 
 		ResponseEntity<WeekResponse> response = restTemplate.getForEntity(uri, WeekResponse.class);
-//		Stream<RecipeResponse> resultsStream = Arrays.stream(Objects.requireNonNull(response.getBody()).getResults());
-//		System.out.println(resultsStream.map(RecipeResponse::printResponse).collect(Collectors.joining("\n")));
 		WeekMeals weekMeals = Objects.requireNonNull(response.getBody()).getWeekMeals();
 		System.out.println(Arrays.stream(weekMeals.getMonday().getMeals()).map(Meal::getTitle).collect(Collectors.joining("\n")));
 	}

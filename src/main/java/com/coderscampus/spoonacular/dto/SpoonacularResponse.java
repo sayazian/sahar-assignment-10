@@ -47,7 +47,4 @@ public class SpoonacularResponse {
         this.totalResults = totalResults;
     }
 
-    public String printResponse() {
-        return results + ".." + offset + ".." + number + ".." + totalResults;
-    }
 }

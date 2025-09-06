@@ -81,10 +81,4 @@ public class Meal {
         this.sourceUrl = sourceUrl;
     }
 
-
-    public String printResponse() {
-        return id + ".." + title + ".." + image + ".." + imageType;
-    }
-
-
 }
