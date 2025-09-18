@@ -2,17 +2,18 @@ package com.coderscampus.spoonacular.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Map;
 
 public class WeekResponse {
 
     @JsonProperty("week")
-    private WeekMeals weekMeals;
+    private Map<String, DayResponse> weekMeals;
 
-    public WeekMeals getWeekMeals() {
+    public Map<String, DayResponse> getWeekMeals() {
         return weekMeals;
     }
 
-    public void setWeekMeals(WeekMeals weekMeals) {
+    public void setWeekMeals(Map<String, DayResponse> weekMeals) {
         this.weekMeals = weekMeals;
     }
 }

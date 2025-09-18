@@ -2,13 +2,13 @@ package com.coderscampus.spoonacular.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class DayMeals {
+public class DayResponse {
 
     @JsonProperty("meals")
     private Meal[] meals;
 
     @JsonProperty("nutrients")
-    private NutrientsResponse nutrients;
+    private Nutrients nutrients;
 
     public Meal[] getMeals() {
         return meals;
@@ -18,11 +18,11 @@ public class DayMeals {
         this.meals = meals;
     }
 
-    public NutrientsResponse getNutrients() {
+    public Nutrients getNutrients() {
         return nutrients;
     }
 
-    public void setNutrients(NutrientsResponse nutrients) {
+    public void setNutrients(Nutrients nutrients) {
         this.nutrients = nutrients;
     }
 }
